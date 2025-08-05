@@ -1,0 +1,23 @@
+name:pipelines
+
+on:[pull_request, push]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout code
+        uses: actions/checkout@v4
+
+      - name: set up Node.js
+        uses: actions/setup-node@v4
+
+        with:
+          node-version: '22.14'
+
+      - name: install dependencies
+        run: npm install
+
+      - name: run tests
+        run: npm test      
+      
